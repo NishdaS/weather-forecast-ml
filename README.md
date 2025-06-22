@@ -32,17 +32,22 @@ A machine learning–based weather forecasting web application that predicts tem
 
 2. Create a virtual environment and activate it (optional but recommended)
 
+   ```bash
    python -m venv venv
    source venv/bin/activate   # For macOS/Linux
    venv\Scripts\activate      # For Windows
 
 3. Install Python dependencies
+   
+   ```bash
    pip install -r requirements.txt
 
-4. Run the backend server
+5. Run the backend server
+
+   ```bash
    python back-end/app.py
 
-5. Open the frontend
+7. Open the frontend
    Open front-end/index.html in your browser or use Live Server in VS Code.
 
 
@@ -53,6 +58,7 @@ Swinburne University of Technology
 GitHub: @NishdaS
 
 Contributors
+Fathima Nishda Mohomed Semsar
 Joywin Infentean Fernando
 Lasith Charuka Perera
 
