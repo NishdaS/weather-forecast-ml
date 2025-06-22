@@ -60,8 +60,6 @@ Swinburne University of Technology
 GitHub: @NishdaS
 
 Contributors
-
-```bash
 Fathima Nishda Mohomed Semsar
 Joywin Infentean Fernando
 Lasith Charuka Perera
