@@ -48,16 +48,20 @@ A machine learning–based weather forecasting web application that predicts tem
    python back-end/app.py
 
 7. Open the frontend
+   ```bash
    Open front-end/index.html in your browser or use Live Server in VS Code.
 
 
 Author
+```bash
 Fathima Nishda Mohomed Semsar
 Bachelor of Computer Science
 Swinburne University of Technology
 GitHub: @NishdaS
 
 Contributors
+
+```bash
 Fathima Nishda Mohomed Semsar
 Joywin Infentean Fernando
 Lasith Charuka Perera
