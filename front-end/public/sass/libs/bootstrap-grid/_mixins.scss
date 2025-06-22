@@ -1,0 +1,221 @@
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+// Mixin to generate grid column classes (xs, sm, md, lg) for a specific index
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  }
+  #{$list} {
+    position: relative;
+    // Prevent columns from collapsing when empty by setting min-height
+    min-height: 1px;
+    // Inner gutter via padding to create space between columns
+    padding-left:  ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+  }
+}
+
+// Mixin to generate float-based grid column classes (with float:left)
+@mixin float-grid-columns($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-#{$class}-#{$i}";
+  }
+  #{$list} {
+    float: left;
+  }
+}
+
+// Mixin to calculate and apply width, push, pull, or offset based on column index
+@mixin calc-grid-column($index, $class, $type) {
+  @if ($type == width) and ($index > 0) {
+    .col-#{$class}-#{$index} {
+      // Calculate column width as a percentage of total columns
+      width: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == push) and ($index > 0) {
+    .col-#{$class}-push-#{$index} {
+      // Apply left push based on the column index percentage
+      left: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == push) and ($index == 0) {
+    .col-#{$class}-push-0 {
+      left: auto; // No push for column index 0
+    }
+  }
+  @if ($type == pull) and ($index > 0) {
+    .col-#{$class}-pull-#{$index} {
+      // Apply right pull based on the column index percentage
+      right: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == pull) and ($index == 0) {
+    .col-#{$class}-pull-0 {
+      right: auto; // No pull for column index 0
+    }
+  }
+  @if ($type == offset) {
+    .col-#{$class}-offset-#{$index} {
+      // Apply left margin to offset the column based on the index
+      margin-left: percentage(($index / $grid-columns));
+    }
+  }
+}
+
+// Mixin to loop through all grid columns and generate corresponding column styles
+@mixin loop-grid-columns($columns, $class, $type) {
+  @for $i from 0 through $columns {
+    @include calc-grid-column($i, $class, $type); // Apply calculation for each column
+  }
+}
+
+// Mixin to create grid columns for a specific class (xs, sm, md, lg)
+@mixin make-grid($class) {
+  @include float-grid-columns($class); // Apply float-based layout
+  @include loop-grid-columns($grid-columns, $class, width); // Apply width calculations for each column
+  @include loop-grid-columns($grid-columns, $class, pull); // Apply pull for each column
+  @include loop-grid-columns($grid-columns, $class, push); // Apply push for each column
+  @include loop-grid-columns($grid-columns, $class, offset); // Apply offset for each column
+}
+
+// Grid system mixins
+
+// Mixin to create a fixed-width container with centered alignment
+@mixin container-fixed($gutter: $grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  ($gutter / 2); // Inner padding to account for gutter space
+  padding-right: ($gutter / 2);
+  @include clearfix(); // Clear floats within the container
+}
+
+// Mixin to create a row that holds grid columns, applying negative margins
+@mixin make-row($gutter: $grid-gutter-width) {
+  margin-left:  ($gutter / -2); // Negative margin to counteract column padding
+  margin-right: ($gutter / -2);
+  @include clearfix(); // Clear floats within the row
+}
+
+// Mixin to generate extra small (xs) columns with a specified width
+@mixin make-xs-column($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  float: left;
+  width: percentage(($columns / $grid-columns)); // Set width as percentage
+  min-height: 1px;
+  padding-left:  ($gutter / 2); // Inner padding for gutter space
+  padding-right: ($gutter / 2);
+}
+
+// Mixin to apply an offset for extra small columns
+@mixin make-xs-column-offset($columns) {
+  margin-left: percentage(($columns / $grid-columns)); // Apply left margin for offset
+}
+
+// Mixin to push extra small columns to the right
+@mixin make-xs-column-push($columns) {
+  left: percentage(($columns / $grid-columns)); // Apply left push for the column
+}
+
+// Mixin to pull extra small columns to the left
+@mixin make-xs-column-pull($columns) {
+  right: percentage(($columns / $grid-columns)); // Apply right pull for the column
+}
+
+// Mixin to generate small (sm) columns with a specified width
+@mixin make-sm-column($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+
+  @media (min-width: $screen-sm-min) { // Apply styles at small screen sizes
+    float: left;
+    width: percentage(($columns / $grid-columns));
+  }
+}
+
+// Mixin for small column offset at small screens
+@mixin make-sm-column-offset($columns) {
+  @media (min-width: $screen-sm-min) {
+    margin-left: percentage(($columns / $grid-columns)); // Apply left margin for offset
+  }
+}
+
+// Mixin for small column push at small screens
+@mixin make-sm-column-push($columns) {
+  @media (min-width: $screen-sm-min) {
+    left: percentage(($columns / $grid-columns)); // Apply left push for the column
+  }
+}
+
+// Mixin for small column pull at small screens
+@mixin make-sm-column-pull($columns) {
+  @media (min-width: $screen-sm-min) {
+    right: percentage(($columns / $grid-columns)); // Apply right pull for the column
+  }
+}
+
+// Mixin to generate medium (md) columns with a specified width
+@mixin make-md-column($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+
+  @media (min-width: $screen-md-min) { // Apply styles at medium screen sizes
+    float: left;
+    width: percentage(($columns / $grid-columns));
+  }
+}
+
+// Mixin for medium column offset at medium screens
+@mixin make-md-column-offset($columns) {
+  @media (min-width: $screen-md-min) {
+    margin-left: percentage(($columns / $grid-columns)); // Apply left margin for offset
+  }
+}
+
+// Mixin for medium column push at medium screens
+@mixin make-md-column-push($columns) {
+  @media (min-width: $screen-md-min) {
+    left: percentage(($columns / $grid-columns)); // Apply left push for the column
+  }
+}
+
+// Mixin for medium column pull at medium screens
+@mixin make-md-column-pull($columns) {
+  @media (min-width: $screen-md-min) {
+    right: percentage(($columns / $grid-columns)); // Apply right pull for the column
+  }
+}
+
+// Mixin to generate large (lg) columns with a specified width
+@mixin make-lg-column($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+
+  @media (min-width: $screen-lg-min) { // Apply styles at large screen sizes
+    float: left;
+    width: percentage(($columns / $grid-columns));
+  }
+}
+
+// Mixin for large column offset at large screens
+@mixin make-lg-column-offset($columns) {
+  @media (min-width: $screen-lg-min) {
+    margin-left: percentage(($columns / $grid-columns)); // Apply left margin for offset
+  }
+}
+
+// Mixin for large column push at large screens
+@mixin make-lg-column-push($columns) {
+  @media (min-width: $screen-lg-min) {
+    left: percentage(($columns / $grid-columns)); //
+  }
+}

@@ -1,0 +1,33 @@
+// Font family definitions
+// Primary font stack for the general body text, falling back to sans-serif fonts
+$primary-font      : "Roboto", "Open Sans", sans-serif;
+
+// Secondary font stack for headings or other emphasized text, with serif fonts as fallbacks
+$secondary-font    : "Roboto Slab", "Raleway", "Open Sans", serif;
+
+// Color Variables
+// Accent color used for highlights or primary UI elements like buttons or links
+$accent-color      : #009ad8;
+
+// The primary color is set to the accent color, acting as the main brand color
+$primary-color     : $accent-color;
+
+// Secondary color used for text or less emphasized elements, such as footer text or secondary buttons
+$secondary-color   : #262936;
+
+// Background color for the overall page or sections, providing a dark theme
+$bg-color          : #1e202b;
+
+// Strong color, usually white, for text or elements that need high contrast
+$strong-color      : #fff;
+
+// Body color, a light gray, for general text, ensuring readability against the dark background
+$body-color        : #bfc1c8;
+
+// Grid system configuration
+// Defines the number of columns in the grid layout, here it's set to 12 columns (Bootstrap style)
+$grid-columns      : 12 !default;
+
+// Gutter width defines the space between columns in the grid layout
+// Here, it is set to 30px by default for consistent spacing between elements
+$grid-gutter-width : 30px !default;

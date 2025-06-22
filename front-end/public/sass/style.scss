@@ -1,0 +1,27 @@
+/*!
+ * Project_Name: Weather Analysis
+ * Author: Group 78 - The Lions
+ */
+
+/*=========================================== 
+ * Importing CSS Libraries
+ *===========================================*/
+
+// Importing foundational styles and settings
+// These are likely settings and mixins for general styling and global styles
+@import 	"libs/settings",           // Importing global settings like variables
+ 			"libs/mixins",             // Importing reusable mixins
+ 			"libs/normalize",          // Normalizing styles across browsers
+ 			"libs/global",             // Importing global styles for base styling
+ 			"libs/components",         // Importing styles for UI components
+
+ 			// Importing Bootstrap grid framework styles
+ 			"libs/bootstrap-grid/settings",  // Grid system settings (e.g., number of columns, gutter width)
+ 			"libs/bootstrap-grid/mixins",    // Grid-specific mixins for responsiveness
+ 			"libs/bootstrap-grid/grid",      // Core grid system styles (e.g., column layouts)
+
+			// Importing layout-specific styles
+ 			"layout/header",            // Styling for the header section of the page
+ 			"layout/content",           // Styling for the main content area
+ 			"layout/sidebar",           // Styling for the sidebar section
+ 			"layout/footer";            // Styling for the footer section
