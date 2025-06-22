@@ -1,25 +1,59 @@
-<h1>Run Back-end follow these steps...!</h1>
+# Weather Forecasting Web App (ML Powered)
 
-1. python --version 
+A machine learning–based weather forecasting web application that predicts temperature trends using historical data. Built as part of a capstone project integrating data science, cybersecurity, and frontend development.
 
-   (created by - Python 3.12.7)
+## Features
 
-2. pip install uvicorn[standard] 
+- Predicts weather patterns using ML models
+- Interactive data visualizations
+- Web-based user interface with a clean and responsive layout
+- Python backend with secure and modular structure
+- Organized frontend and backend codebase
 
-3. pip install pandas 
+## Tech Stack
 
-4. pip install fastapi
+| Category       | Tools and Frameworks                       |
+|----------------|--------------------------------------------|
+| Programming    | Python, JavaScript, HTML, CSS              |
+| Frontend       | Chart.js, Bootstrap, Vanilla JS or React   |
+| Backend        | Python (Flask or FastAPI)                  |
+| ML Libraries   | scikit-learn, pandas, NumPy                |
+| Version Control| Git, GitHub                                |
+| Development    | VS Code, Postman, GitHub CLI               |
 
-5. pip install scikit-learn 
 
-6. pip install flask pandas 
+## Getting Started
 
-7. python -m uvicorn main:app --reload
+1. Clone the repository
 
-8. if code underline in red color setup python (SDK 3.12)
+   ```bash
+   git clone https://github.com/NishdaS/weather-forecast-ml.git
+   cd weather-forecast-ml
 
-<h1>Run front-end follow these steps...!</h1>
- 
- 1. npm install
+2. Create a virtual environment and activate it (optional but recommended)
 
- 2. npm run start 
+   python -m venv venv
+   source venv/bin/activate   # For macOS/Linux
+   venv\Scripts\activate      # For Windows
+
+3. Install Python dependencies
+   pip install -r requirements.txt
+
+4. Run the backend server
+   python back-end/app.py
+
+5. Open the frontend
+   Open front-end/index.html in your browser or use Live Server in VS Code.
+
+
+Author
+Fathima Nishda Mohomed Semsar
+Bachelor of Computer Science
+Swinburne University of Technology
+GitHub: @NishdaS
+
+Contributors
+Joywin Infentean Fernando
+Lasith Charuka Perera
+
+This project was developed as part of a team based academic requirement and is intended for learning and demonstration purposes.
